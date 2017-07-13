@@ -18,6 +18,7 @@
     margin-left: -140px;
     width: 280px;
     background-color: #fafafa;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .tp-header-container {
@@ -72,6 +73,31 @@
     padding: 20px 10px;
 }
 
+.tp-clock-pointer {
+    position: absolute;
+    background-color: #009688;
+    width: 2px;
+    height: 40%;
+    left: 50%;
+    bottom: 50%;
+    margin-left: -1px;
+    transform-origin: center bottom 0;
+    pointer-events: none;
+}
+
+.tp-clock-center {
+    position: absolute;
+    background-color: #009688;
+    border-radius: 100%;
+    height: 4px;
+    width: 4px;
+    margin-top: -2px;
+    margin-left: -2px;
+    left: 50%;
+    top: 50%;
+    pointer-events: none;
+}
+
 .tp-clock {
     display: block;
     height: 100%;
@@ -86,16 +112,53 @@
     position: absolute;
     width: 32px;
     height: 32px;
-    margin-left: -16px;
-    margin-top: -16px;
+    /*margin-left: -16px;*/
+    /*margin-top: -16px;*/
     border-radius: 100%;
     text-align: center;
     line-height: 32px;
 }
 
-.tp-clock-number-active {
-    color: #fafafa;
+.tp-clock-number-0 {
+    left: 130px;
+    top: 21px;
+}
+
+.tp-clock-number-45 {
+    left: 21px;
+    top: 130px
+}
+
+.tp-clock-overlay-clip {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    /*margin-left: -16px;*/
+    /*margin-top: -16px;*/
+    border-radius: 100%;
     background-color: #009688;
+    overflow: hidden;
+}
+
+.tp-clock-overlay-container {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: visible;
+}
+
+.tp-clock-number-0 .tp-clock-overlay-container {
+    left: -114px;
+    top: -5px;
+}
+
+.tp-clock-number-45 .tp-clock-overlay-container {
+    left: -5px;
+    top: -114px;
+}
+
+.tp-clock-overlay-container .tp-clock-number {
+    color: #fafafa;
 }
 
 .tp-footer {
@@ -107,14 +170,11 @@
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    border: 10px;
+    border: none;
     cursor: pointer;
     text-decoration: none;
     margin: 0;
     padding: 0;
-    outline: none;
-    font-size: inherit;
-    font-weight: inherit;
     height: 36px;
     line-height: 36px;
     min-width: 88px;
@@ -124,6 +184,11 @@
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0);
     text-align: center;
+}
+
+.tp-button:hover {
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    background-color: #eee;
 }
 
 .tp-button-content {

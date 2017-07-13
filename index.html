@@ -12,46 +12,59 @@
 
     <link rel="stylesheet" href="./timepicker.css">
 
-    <script src="./timepicker.js"></script>
 </head>
 <body>
 
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="./timepicker.js"></script>
+    <script>
+        TimePicker.installStyles();
+        TimePicker.createDom().appendTo('body');
+    </script>
 
-<div class="tp-popup">
-    <div class="tp-shadow"></div>
-    <div class="tp-container">
-        <!-- Header -->
-        <div class="tp-header-container">
-            <div class="tp-header-time-container">
-                <div class="tp-header-time">
-                    <span class="tp-header-hours">12</span><span>:</span><span
-                        class="tp-header-minutes">00</span>
-                    <div class="tp-header-am-pm-container">
-                        <span class="tp-header-am-pm tp-header-am-pm-active">AM</span>
-                        <span class="tp-header-am-pm">PM</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Body -->
-        <div class="tp-body">
-            <div class="tp-clock">
-                <span class="tp-clock-number"
-                      style="transform:translate(130px,21px);">12</span>
-                <span class="tp-clock-number tp-clock-number-active"
-                      style="transform:translate(21px,130px);">9</span>
-            </div>
-        </div>
-        <!-- Footer -->
-        <div class="tp-footer">
-            <button tabindex="0" type="button" class="tp-button">
-                <span class="tp-button-content">CANCEL</span>
-            </button>
-            <button tabindex="0" type="button" class="tp-button">
-                <span class="tp-button-content">OK</span>
-            </button>
-        </div>
-    </div>
-</div>
+
+<!--<div class="tp-popup">-->
+    <!--<div class="tp-shadow"></div>-->
+    <!--<div class="tp-container">-->
+        <!--&lt;!&ndash; Header &ndash;&gt;-->
+        <!--<div class="tp-header-container">-->
+            <!--<div class="tp-header-time-container">-->
+                <!--<div class="tp-header-time">-->
+                    <!--<span class="tp-header-hours">12</span><span>:</span><span-->
+                        <!--class="tp-header-minutes">00</span>-->
+                    <!--<div class="tp-header-am-pm-container">-->
+                        <!--<span class="tp-header-am-pm tp-header-am-pm-active">AM</span>-->
+                        <!--<span class="tp-header-am-pm">PM</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; Body &ndash;&gt;-->
+        <!--<div class="tp-body">-->
+            <!--<div class="tp-clock">-->
+                <!--<div class="tp-clock-center"></div>-->
+                <!--<span class="tp-clock-number tp-clock-number-0">12</span>-->
+                <!--<span class="tp-clock-number tp-clock-number-45">9</span>-->
+                <!--<div class="tp-clock-pointer"-->
+                     <!--style="transform: rotateZ(0deg);"></div>-->
+                <!--<div class="tp-clock-overlay-clip tp-clock-number-0">-->
+                    <!--<div class="tp-clock-overlay-container">-->
+                        <!--<span class="tp-clock-number tp-clock-number-0">12</span>-->
+                        <!--<span class="tp-clock-number tp-clock-number-45">9</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; Footer &ndash;&gt;-->
+        <!--<div class="tp-footer">-->
+            <!--<button tabindex="0" type="button" class="tp-button">-->
+                <!--<span class="tp-button-content">CANCEL</span>-->
+            <!--</button>-->
+            <!--<button tabindex="1" type="button" class="tp-button">-->
+                <!--<span class="tp-button-content">OK</span>-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 </html>
