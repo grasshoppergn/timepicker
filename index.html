@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time pickers</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,300,500&amp;subset=latin"
+          media="all">
+
+    <link rel="stylesheet" href="./timepicker.css">
+
+    <script src="./timepicker.js"></script>
+</head>
+<body>
+
+
+<div class="tp-popup">
+    <div class="tp-shadow"></div>
+    <div class="tp-container">
+        <!-- Header -->
+        <div class="tp-header-container">
+            <div class="tp-header-time-container">
+                <div class="tp-header-time">
+                    <span class="tp-header-hours">12</span><span>:</span><span
+                        class="tp-header-minutes">00</span>
+                    <div class="tp-header-am-pm-container">
+                        <span class="tp-header-am-pm tp-header-am-pm-active">AM</span>
+                        <span class="tp-header-am-pm">PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="tp-body">
+            <div class="tp-clock">
+                <span class="tp-clock-number"
+                      style="transform:translate(130px,21px);">12</span>
+                <span class="tp-clock-number tp-clock-number-active"
+                      style="transform:translate(21px,130px);">9</span>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="tp-footer">
+            <button tabindex="0" type="button" class="tp-button">
+                <span class="tp-button-content">CANCEL</span>
+            </button>
+            <button tabindex="0" type="button" class="tp-button">
+                <span class="tp-button-content">OK</span>
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

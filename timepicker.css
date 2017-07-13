@@ -1,0 +1,138 @@
+.tp-popup {
+    font-family: Roboto, sans-serif;
+}
+
+.tp-shadow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.54);
+}
+
+.tp-container {
+    position: fixed;
+    margin-top: 100px;
+    left: 50%;
+    margin-left: -140px;
+    width: 280px;
+    background-color: #fafafa;
+}
+
+.tp-header-container {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #009688;
+    color: #fff;
+    font-size: 58px;
+    padding: 14px 0;
+}
+
+.tp-header-time-container {
+    text-align: center;
+    justify-content: center;
+    align-items: baseline;
+
+}
+
+.tp-header-time {
+    position: relative;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.tp-header-minutes {
+    opacity: 0.76;
+}
+
+.tp-header-am-pm-container {
+    font-size: 17px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 20px;
+    left: 100%;
+    width: 30px;
+    margin-left: 10px;
+}
+
+.tp-header-am-pm {
+    opacity: 0.76;
+}
+
+.tp-header-am-pm-active {
+    opacity: 1;
+}
+
+.tp-body {
+    box-sizing: border-box;
+    position: relative;
+    height: 300px;
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.tp-clock {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    background-color: #eee;
+    position: relative;
+}
+
+.tp-clock-number {
+    color: #5d5b5b;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin-left: -16px;
+    margin-top: -16px;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 32px;
+}
+
+.tp-clock-number-active {
+    color: #fafafa;
+    background-color: #009688;
+}
+
+.tp-footer {
+    text-align: right;
+    padding: 8px;
+}
+
+.tp-button {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    height: 36px;
+    line-height: 36px;
+    min-width: 88px;
+    color: rgb(0, 188, 212);
+    border-radius: 2px;
+    user-select: none;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+
+.tp-button-content {
+    position: relative;
+    padding-left: 16px;
+    padding-right: 16px;
+    vertical-align: middle;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+}
