@@ -12,59 +12,102 @@
 
     <link rel="stylesheet" href="./timepicker.css">
 
+    <style>
+        .button {
+            position: relative;
+            display: inline-block;
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 0 0 50px 0;
+            height: 72px;
+            line-height: 56px;
+            color: rgb(0, 188, 212);
+            border-radius: 2px;
+            user-select: none;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+        .button:hover {
+            background-color: #eee;
+        }
+
+        .button-content {
+            position: relative;
+            padding: 32px 24px;
+            vertical-align: middle;
+            letter-spacing: 0;
+            font-weight: 500;
+            font-size: 56px;
+        }
+    </style>
+
 </head>
 <body>
+<button type="button" class="button" id="12h-button-1">
+    <span class="button-content"></span>
+</button>
+<br/>
+<button type="button" class="button" id="12h-button-2">
+    <span class="button-content"></span>
+</button>
+<br/>
+<button type="button" class="button" id="24h-button">
+    <span class="button-content"></span>
+</button>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="./timepicker.js"></script>
-    <script>
-        TimePicker.installStyles();
-        TimePicker.createDom().appendTo('body');
-    </script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="./timepicker.js"></script>
+<script>
+  var $field12_1 = $('#12h-button-1');
+  var $field12_2 = $('#12h-button-2');
+  var $field24 = $('#24h-button');
 
+  var currDate = new Date();
+  var hours = currDate.getHours();
+  var minutes = currDate.getMinutes();
 
-<!--<div class="tp-popup">-->
-    <!--<div class="tp-shadow"></div>-->
-    <!--<div class="tp-container">-->
-        <!--&lt;!&ndash; Header &ndash;&gt;-->
-        <!--<div class="tp-header-container">-->
-            <!--<div class="tp-header-time-container">-->
-                <!--<div class="tp-header-time">-->
-                    <!--<span class="tp-header-hours">12</span><span>:</span><span-->
-                        <!--class="tp-header-minutes">00</span>-->
-                    <!--<div class="tp-header-am-pm-container">-->
-                        <!--<span class="tp-header-am-pm tp-header-am-pm-active">AM</span>-->
-                        <!--<span class="tp-header-am-pm">PM</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; Body &ndash;&gt;-->
-        <!--<div class="tp-body">-->
-            <!--<div class="tp-clock">-->
-                <!--<div class="tp-clock-center"></div>-->
-                <!--<span class="tp-clock-number tp-clock-number-0">12</span>-->
-                <!--<span class="tp-clock-number tp-clock-number-45">9</span>-->
-                <!--<div class="tp-clock-pointer"-->
-                     <!--style="transform: rotateZ(0deg);"></div>-->
-                <!--<div class="tp-clock-overlay-clip tp-clock-number-0">-->
-                    <!--<div class="tp-clock-overlay-container">-->
-                        <!--<span class="tp-clock-number tp-clock-number-0">12</span>-->
-                        <!--<span class="tp-clock-number tp-clock-number-45">9</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; Footer &ndash;&gt;-->
-        <!--<div class="tp-footer">-->
-            <!--<button tabindex="0" type="button" class="tp-button">-->
-                <!--<span class="tp-button-content">CANCEL</span>-->
-            <!--</button>-->
-            <!--<button tabindex="1" type="button" class="tp-button">-->
-                <!--<span class="tp-button-content">OK</span>-->
-            <!--</button>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+  function update($field) {
+    var h = $field.data('hours');
+    var m = $field.data('minutes');
+    var mode12h = $field.data('mode12h');
+    var am = h < 12;
+    $field.find('.button-content').text(TimePicker.formatTime(h, m, mode12h, false) + (mode12h ? (am ? ' am' : ' pm') : ''));
+  }
+
+  function onOk(h, m, $field) {
+    $field.data('hours', h);
+    $field.data('minutes', m);
+    update($field);
+  }
+
+  function setupField($field, mode12h, pickerMode12h, hours, minutes) {
+    $field.data('hours', hours);
+    $field.data('minutes', minutes);
+    $field.data('mode12h', mode12h);
+    update($field);
+    $field.click(function() {
+      TimePicker.show(
+          $field.data('hours'),
+          $field.data('minutes'),
+          pickerMode12h,
+          onOk,
+          $field);
+    });
+  }
+
+  setupField($field12_1, true, true, hours, minutes);
+  setupField($field12_2, false, true, hours, minutes);
+  setupField($field24, false, false, hours, minutes);
+</script>
 </body>
 </html>
