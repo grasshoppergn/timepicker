@@ -2,7 +2,7 @@ window.TimePicker = (function() {
   'use strict';
 
   var $popup, $pointer, $clip, $ampm, $am, $pm, $hours, $minutes, $clock12Hours,
-      $clock24Hours, $clockMinutes, $clockOverlay, onOk, okData, onCancel, xDiff, yDiff;
+      $clock24Hours, $clockMinutes, $clockOverlay, onOk, okData, onCancel;
   var mode12h = true, inited = false, h = 0, m = 0, showingHours = true, showingAM = true, pointsTo = 0;
   var $document = $(document);
 
@@ -102,30 +102,35 @@ window.TimePicker = (function() {
     $clockOverlay = $popup.find('.tp-clock-overlay-interceptor');
 
     $clockOverlay.on('touchstart mousedown', null, null, clockMouseDown);
-    $hours.on('touchstart click', null, 'hours', timeClick);
-    $minutes.on('touchstart click', null, 'minutes', timeClick);
-    $am.on('touchstart click', null, 'am', timeClick);
-    $pm.on('touchstart click', null, 'pm', timeClick);
-    $popup.find('.tp-shadow, .tp-button-cancel').on('touchstart click', null, null, function() { hide(false); });
-    $popup.find('.tp-button-ok').on('touchstart click', null, null, hide);
+    $hours.on('click', null, 'hours', timeClick);
+    $minutes.on('click', null, 'minutes', timeClick);
+    $am.on('click', null, 'am', timeClick);
+    $pm.on('click', null, 'pm', timeClick);
+    $popup.find('.tp-shadow, .tp-button-cancel').on('click', null, null, function() { hide(false); });
+    $popup.find('.tp-button-ok').on('click', null, null, hide);
   }
 
   function clockMouseDown(e) {
     e.preventDefault();
     $document.on('touchmove mousemove', null, null, clockMouseMove);
     $document.on('touchend mouseup', null, null, clockMouseUp);
-    xDiff = e.clientX - e.offsetX;
-    yDiff = e.clientY - e.offsetY;
-    updateTime(e.offsetX, e.offsetY);
+    if (e.type == 'touchstart')
+      e = e.originalEvent.touches[0];
+    updateTime(e.clientX, e.clientY);
   }
 
   function clockMouseMove(e) {
-    updateTime(e.clientX - xDiff, e.clientY - yDiff);
+    if (e.type == 'touchmove')
+      e = e.originalEvent.touches[0];
+    updateTime(e.clientX, e.clientY);
   }
 
   function clockMouseUp(e) {
     $document.off('touchmove mousemove', null, clockMouseMove);
     $document.off('touchend mouseup', null, clockMouseUp);
+    if (e.type == 'touchend')
+      e = e.originalEvent.touches[0];
+    updateTime(e.clientX, e.clientY);
     if (showingHours)
       showMinutes();
   }
@@ -153,8 +158,10 @@ window.TimePicker = (function() {
   }
 
   function updateTime(x, y) {
-    x -= cx;
-    y -= cy;
+    var offset = $clockOverlay.offset();
+    console.log(x, y, offset.x, offset.y);
+    x -= offset.left + cx;
+    y -= offset.top + cy;
     var angle = (Math.atan2(y, x) * 180 / Math.PI + 90 + 360) % 360;
     if (showingHours) {
       h = Math.round(angle / 30) % 12;
