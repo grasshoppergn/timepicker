@@ -1,14 +1,6 @@
 .tp-popup {
     font-family: Roboto, sans-serif;
     z-index: 1500;
-    /*opacity: 1;*/
-    /*will-change: opacity;*/
-    /*transition: opacity 10s cubic-bezier(.25, .8, .25, 1) 10s;*/
-}
-
-.tp-popup-invisible {
-    /*opacity: 0;*/
-    /*transition: opacity 0s;*/
 }
 
 .tp-disabled {
