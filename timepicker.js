@@ -129,7 +129,7 @@ window.TimePicker = (function() {
     $document.off('touchmove mousemove', null, clockMouseMove);
     $document.off('touchend mouseup', null, clockMouseUp);
     if (e.type == 'touchend')
-      e = e.originalEvent.touches[0];
+      e = e.originalEvent.changedTouches[0];
     updateTime(e.clientX, e.clientY);
     if (showingHours)
       showMinutes();
@@ -159,7 +159,6 @@ window.TimePicker = (function() {
 
   function updateTime(x, y) {
     var offset = $clockOverlay.offset();
-    console.log(x, y, offset.x, offset.y);
     x -= offset.left + cx;
     y -= offset.top + cy;
     var angle = (Math.atan2(y, x) * 180 / Math.PI + 90 + 360) % 360;
